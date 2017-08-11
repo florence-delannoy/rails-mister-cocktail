@@ -1,0 +1,10 @@
+<h1>Cocktail#new</h1>
+<p>Find me in app/views/cocktail/new.html.erb</p>
+
+<%= simple_form_for(@cocktail) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.submit %>
+  
+<% end %>
