@@ -1,18 +1,27 @@
 <div class="banner">
-	<h1>Nos cocktails</h1>
+	<h1> NOS COCKTAILS</h1>
 </div>
 
 <div class="container">
-
 	<%  @cocktails.each do |cocktail| %>
 	<div class="col-xs-12 col-sm-4">
-		<div class="card">
-		<h2> <%= link_to cocktail.name, cocktail_path(cocktail.id) %></h2>
-		<p> <% cocktail.doses %> </p>
-		<%= link_to "Delete", cocktail_path(cocktail.id), method: :delete, data: { confirm: "Are you sure?" } %>
+
+		<div class="card"
+			style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+			url('<%= cocktail.photo.url.nil? ? 'https://kitt.lewagon.com/placeholder/cities/random' : cl_image_path(cocktail.photo, height: 300, width: 400, crop: :fill) %>')">
+			<div class="card-category">
+				<%= link_to cocktail.name, cocktail_path(cocktail.id) %>
+			</div>
+			<div class="card-description">
+				<%= link_to "Delete", cocktail_path(cocktail.id), method: :delete, data: { confirm: "Are you sure?" } %>
+			</div>
 		</div>
 	</div>
 	<% end %>
+
+	<div class="button-add">
+		<%= link_to "Add a cocktail", new_cocktail_path, class: "btn btn-danger" %> 
+	</div>
+
 </div>
 
-<div> <%= link_to "add a cocktail", new_cocktail_path %> </div>
